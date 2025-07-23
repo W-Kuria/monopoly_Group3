@@ -80,7 +80,14 @@ const[laps,setlaps]=useState({"Player1":0,"Computer":0})
 
  return(
    <div>
-    <h1>{turn},You are currently on:{currentLocation.name}</h1>
+    <div>
+        <h1>{turn},You are currently on:{currentLocation.name}</h1>        
+    </div>
+    <div>
+        <h2>{players[0].name},you have {players[0].money}  in the bank</h2>
+        <h2>{players[1].name},you have {players[1].money}  in the bank</h2>
+    </div>
+    
     <Dice Roll={move} />
    </div>
  );

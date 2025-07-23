@@ -1,25 +1,17 @@
-import MonopolyBoard from './MonopolyBoard';
+import MonopolyBoard from "./MonopolyBoard";
 
-const GameBoard = ({ players, ...props }) => {
-  const currentPlayer = players[props.currentPlayerIndex];
+const GameBoard = () => {
+  const players = [
+    { name: "Player 1", color: "red", money: 1500, position: 0 },
+    { name: "Player 2", color: "blue", money: 1500, position: 5 }
+  ];
 
   return (
-    <div className="container text-center mt-4">
-    
+    <div className="container py-4">
+      <h2 className="text-center mb-4"></h2>
       <MonopolyBoard players={players} />
-
-      <div className="mt-4">
-        <p>Current Player: {currentPlayer.name}</p>
-        <p>Money: ${currentPlayer.money}</p>
-        <p>Position: {currentPlayer.position}</p>
-        <p>Dice: {props.dice.join(', ')}</p>
-        <button className="btn btn-outline-primary" onClick={props.onBack}>
-          Back to Welcome Page
-        </button>
-      </div>
     </div>
   );
 };
-
 
 export default GameBoard;

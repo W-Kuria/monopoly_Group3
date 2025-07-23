@@ -4,8 +4,35 @@ import { useState } from "react";
 function Movement(){
  const[position1,setposition1]=useState(0);
  const[position2,setposition2]=useState(0)
- const[turn,setturn]=useState("Player1")
- const[mana,setmana]=useState(3)
+ const[turn,setturn]=useState("Player1");
+ const[board,setboard]=useState(()=>{
+    const initial=Locate();
+    initial[1].owner="Player1";
+    initial[3].owner="Player1";
+    initial[6].owner="Player1";
+    initial[8].owner = "Computer";
+    initial[9].owner = "Computer";
+    initial[11].owner = "Computer";  
+    return initial;
+
+ })
+ const [players,setplayers] =useState([{
+    id: 1,
+    name: 'Player 1',
+    position: 0,
+    money: 1500,
+    properties: [1,3,6],
+  },
+  {
+    id: 2,
+    name: 'Computer',
+    position: 0,
+    money: 1500,
+    properties: [8,9,11],
+  }]);
+
+
+ 
 const location=Locate();
  const move=(Roll)=>{
     if(turn==="Player1"){
@@ -23,8 +50,8 @@ const location=Locate();
     }else{
         setposition2(newPos)
     }setturn("Player1")
- }
- }
+ }}
+ 
  const currentPosition=()=>{
     if(turn==="Player1"){
         return position1

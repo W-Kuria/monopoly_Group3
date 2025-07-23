@@ -36,11 +36,14 @@ const[laps,setlaps]=useState({"Player1":0,"Computer":0})
     if(newPos>=board.length){
         newPos=newPos-board.length
         newLaps={...laps,Player1:laps.Player1+1}
-        setlaps(newLaps);
+        if(laps.Player1===0){
         alert("Player1,You have completed your first lap.You can now own property and  go collect 200$ as a bonus");
-    const updatePlayers={...players}
-updatePlayers[0].money+=200
-setplayers(updatePlayers);
+        const updatePlayers={...players}
+        updatePlayers[0].money+=200
+        setplayers(updatePlayers);
+        }
+        setlaps(newLaps);
+       
 }
 
 
@@ -52,11 +55,14 @@ setplayers(updatePlayers);
        if(newPos>=board.length){
          newPos=newPos-board.length;
          newLaps={...laps, Computer: laps.Computer+1};
-         setlaps(newLaps);
-         alert("Computer,You have completed your first lap.You can now own property and  go collect 200$ as a bonus");
+         if(laps.Computer===0){
+        alert("Computer,You have completed your first lap.You can now own property and  go collect 200$ as a bonus");
          const updatePlayers={...players}
          updatePlayers[1].money+=200
          setplayers(updatePlayers);
+         }
+         setlaps(newLaps);
+         
        }
        setposition2(newPos);
        setturn("Player1");

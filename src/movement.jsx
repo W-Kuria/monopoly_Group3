@@ -7,12 +7,7 @@ function Movement(){
  const[turn,setturn]=useState("Player1");
  const[board,setboard]=useState(()=>{
     const initial=Locate();
-    initial[1].owner="Player1";
-    initial[3].owner="Player1";
-    initial[6].owner="Player1";
-    initial[8].owner = "Computer";
-    initial[9].owner = "Computer";
-    initial[11].owner = "Computer";  
+    
     return initial;
 
  })
@@ -21,37 +16,52 @@ function Movement(){
     name: 'Player 1',
     position: 0,
     money: 1500,
-    properties: [1,3,6],
+    properties: [],
   },
   {
     id: 2,
     name: 'Computer',
     position: 0,
     money: 1500,
-    properties: [8,9,11],
+    properties: [],
   }]);
 
-
+const[laps,setlaps]=useState({"Player1":0,"Computer":0})
  
-const location=Locate();
+
  const move=(Roll)=>{
     if(turn==="Player1"){
-        const newPos=position1+Roll;
-    if(newPos>=location.length){
-        setposition1(newPos-location.length)
+        let newPos=position1+Roll;
+        let newLaps={...laps}
+    if(newPos>=board.length){
+        newPos=newPos-board.length
+        newLaps={...laps,Player1:laps.Player1+1}
+        setlaps(newLaps);
+        alert("Player1,You have completed your first lap.You can now own property and  go collect 200$ as a bonus");
+    const updatePlayers={...players}
+updatePlayers[0].money+=200
+setplayers(updatePlayers);
+}
+
+
+        setposition1(newPos);
+        setturn("Computer");
     }else{
-        setposition1(newPos)
+       let newPos=position2+Roll;
+       let newLaps={...laps};
+       if(newPos>=board.length){
+         newPos=newPos-board.length;
+         newLaps={...laps, Computer: laps.Computer+1};
+         setlaps(newLaps);
+         alert("Computer,You have completed your first lap.You can now own property and  go collect 200$ as a bonus");
+         const updatePlayers={...players}
+         updatePlayers[1].money+=200
+         setplayers(updatePlayers);
+       }
+       setposition2(newPos);
+       setturn("Player1");
     }
-    setturn("Computer")
- }else{
-    const newPos=position2+Roll;
-    if(newPos>=location.length){
-        setposition2(newPos-location.length)
-    }else{
-        setposition2(newPos)
-    }setturn("Player1")
- }}
- 
+ }
  const currentPosition=()=>{
     if(turn==="Player1"){
         return position1
@@ -59,7 +69,9 @@ const location=Locate();
         return position2;
     }
  }
-  const currentLocation=location[currentPosition()];
+  const currentLocation=board[currentPosition()];
+
+
  return(
    <div>
     <h1>{turn},You are currently on:{currentLocation.name}</h1>

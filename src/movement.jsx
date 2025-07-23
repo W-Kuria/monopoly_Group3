@@ -16,16 +16,14 @@ function Movement(){
     name: 'Player 1',
     position: 0,
     money: 1500,
-    properties: [],
-    canBuy:false
+    properties: []
   },
   {
     id: 2,
     name: 'Computer',
     position: 0,
     money: 1500,
-    properties: [],
-    canBuy:false
+    properties: []
   }]);
 
 const[laps,setlaps]=useState({"Player1":0,"Computer":0})
@@ -40,9 +38,8 @@ const[laps,setlaps]=useState({"Player1":0,"Computer":0})
         newLaps={...laps,Player1:laps.Player1+1}
         if(newLaps.Player1===1){
         alert("Player1,You have completed your first lap.You can now own property and  go collect 200$ as a bonus");
-        const updatePlayers={...players}
+        const updatePlayers=[...players]
         updatePlayers[0].money+=200
-        updatePlayers[0].canBuy=true
         setplayers(updatePlayers);
         }
         setlaps(newLaps);
@@ -55,21 +52,35 @@ const[laps,setlaps]=useState({"Player1":0,"Computer":0})
     }else{
        let newPos=position2+Roll;
        let newLaps={...laps};
+       const updatePlayers=[...players];
        if(newPos>=board.length){
          newPos=newPos-board.length;
          newLaps={...laps, Computer: laps.Computer+1};
-         if(newLaps.Computer===0){
+         if(newLaps.Computer===1){
         alert("Computer,You have completed your first lap.You can now own property and  go collect 200$ as a bonus");
-         const updatePlayers=[...players]
          updatePlayers[1].money+=200
-         updatePlayers[1].canBuy=true;
          setplayers(updatePlayers);
          }
          setlaps(newLaps);
          
        }
        setposition2(newPos);
-       
+
+       const computerLocation=board[newPos];
+       if(computerLocation.type==="property"&&newLaps.Computer>=1&& updatePlayers[1].money>computerLocation.cost&&!updatePlayers[1].properties.includes(computerLocation.name)){
+        const remainder=updatePlayers[1].money-computerLocation.cost;
+        const purchase=computerLocation.cost<=150&&remainder>=300&&Math.random()<0.5;
+        if(purchase){
+            updatePlayers[1].money-=computerLocation.cost;
+            updatePlayers[1].properties.push(computerLocation.name);
+            alert(`Computer bought ${computerLocation.name} for ${computerLocation.cost}`)
+            setplayers(updatePlayers);
+        }else{
+            alert(`Computer has insufficient funds to buy ${computerLocation.name}`)
+        }
+
+
+       }
        setturn("Player1");
     }
     
@@ -123,6 +134,9 @@ const[laps,setlaps]=useState({"Player1":0,"Computer":0})
         <h2>{players[0].name},you have {players[0].money}  in the bank</h2>
         <h2>{players[1].name},you have {players[1].money}  in the bank</h2>
     </div>
+    {turn==="Player1"&&currentLocation.type==="property"&&laps.Player1>=1&&(
+        <button onClick={buyProperty}>Buy property</button>
+    )}
     
     <Dice Roll={move} />
    </div>

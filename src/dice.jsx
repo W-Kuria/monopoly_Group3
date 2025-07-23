@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Dice() {
+function Dice({Roll}) {
   const [number1, setNumber1] = useState(null);
   const [number2, setNumber2] = useState(null);
 
@@ -17,6 +17,9 @@ function Dice() {
     setNumber2(newNumber2)
    const sum=newNumber1+newNumber2;
   alert(sum)
+  if(Roll){
+    Roll(sum)
+  }
   };
 
   

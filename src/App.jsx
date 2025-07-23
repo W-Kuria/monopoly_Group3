@@ -1,24 +1,33 @@
 import React, { useState } from 'react';
 import WelcomePage from './components/WelcomePage';
-
-const GameBoard = ({ onBack }) => (
-  <div className="container mt-5 text-center">
-    <h2>Monopoly Game Board (Coming Soon)</h2>
-    <button className="btn btn-outline-primary mt-4" onClick={onBack}>
-      Back to Welcome Page
-    </button>
-  </div>
-);
+import GameBoard from './components/GameBoard';
 
 function App() {
   const [gameStarted, setGameStarted] = useState(false);
+
+  // Game state (Task 1)
+  const [players, setPlayers] = useState([
+    { id: 1, name: 'Player 1', money: 1500, position: 0, properties: [] },
+    { id: 2, name: 'Player 2', money: 1500, position: 0, properties: [] },
+  ]);
+
+  const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
+  const [dice, setDice] = useState([1, 1]);
 
   return (
     <>
       {!gameStarted ? (
         <WelcomePage onStart={() => setGameStarted(true)} />
       ) : (
-        <GameBoard onBack={() => setGameStarted(false)} />
+        <GameBoard
+          players={players}
+          setPlayers={setPlayers}
+          currentPlayerIndex={currentPlayerIndex}
+          setCurrentPlayerIndex={setCurrentPlayerIndex}
+          dice={dice}
+          setDice={setDice}
+          onBack={() => setGameStarted(false)}
+        />
       )}
     </>
   );

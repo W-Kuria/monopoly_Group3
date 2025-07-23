@@ -1,5 +1,6 @@
 function Locate(){
     const location = [
+
   { position: 0, name: "GO", type: "special" },
   { position: 1, name: "Mediterranean Avenue", type: "property", cost: 60 },
   { position: 2, name: "Community Chest", type: "chest" },
@@ -40,6 +41,8 @@ function Locate(){
   { position: 37, name: "Park Place", type: "property", cost: 350 },
   { position: 38, name: "Luxury Tax", type: "tax", cost: 100 },
   { position: 39, name: "Boardwalk", type: "property", cost: 400 }
+
+
 ];
 
 return location;

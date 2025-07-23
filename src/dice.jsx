@@ -16,7 +16,7 @@ function Dice({Roll}) {
     setNumber1(newNumber1);
     setNumber2(newNumber2)
    const sum=newNumber1+newNumber2;
-  alert(sum)
+  alert(`move your piece+ ${sum}`)
   if(Roll){
     Roll(sum)
   }

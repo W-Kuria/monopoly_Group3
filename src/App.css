@@ -98,3 +98,22 @@ button:hover {
   border-left: 4px solid #fbc02d;
   text-align: left;
 }
+
+.go-to-jail-feature {
+  margin-top: 20px;
+  padding: 20px;
+  border: 2px solid #d32f2f;
+  border-radius: 8px;
+  background-color: #ffebee;
+}
+
+.player-status {
+  display: flex;
+  justify-content: space-around;
+  margin: 15px 0;
+}
+
+.player-status p {
+  margin: 5px;
+  font-weight: bold;
+}

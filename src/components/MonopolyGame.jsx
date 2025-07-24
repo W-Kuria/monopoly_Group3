@@ -14,6 +14,7 @@ const MonopolyGame = () => {
 
   // Roll dice and move player
   const rollDice = () => {
+    // GO TO JAIL FEATURE: Skip turn enforcement
     if (player.skipNextTurn) {
       setPlayer({ ...player, skipNextTurn: false });
       setMessage("You skipped this turn because you were sent to jail!");
@@ -48,11 +49,11 @@ const MonopolyGame = () => {
       newMessage += " You landed on GO and collected $200!";
     }
     
-    // Handle landing on Go To Jail (position 30)
+    // GO TO JAIL FEATURE: Move player to jail and skip next turn
     if (newPosition === 30) {
-      newPosition = 10; // Jail is at position 10
-      inJail = true;
-      skipNextTurn = true;
+      newPosition = 10; // Move to Jail position (position 10)
+      inJail = true;    // Set jail status
+      skipNextTurn = true; // Skip next turn
       newMessage += " You landed on Go To Jail! Move to Jail and skip your next turn.";
     }
     

@@ -36,6 +36,9 @@ A simplified, interactive digital version of the classic Monopoly board game bui
 
 - ▶️ **Resume Game**
   - Reappear option after returning to instructions.
+    
+## Publishers
+This Project was created by William Kuria, Mathew Kariuki, Brenda Njaramba, and Justine Gichure.
 
 ## 📁 Folder Structure
 
@@ -54,4 +57,3 @@ src/
 └── main.jsx
 
 
-##This Project was made by: William Kuria, Mathew Kariuki, Brenda Njaramba and Justine Gichure.

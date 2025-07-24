@@ -4,8 +4,8 @@ import GameBoard from './components/GameBoard';
 
 function App() {
   const [gameStarted, setGameStarted] = useState(false);
-  const [resumeAvailable, setResumeAvailable] = useState(false); // Track if resume should be shown
-  const [instructionsViewed, setInstructionsViewed] = useState(false); // Track instruction viewing
+  const [resumeAvailable, setResumeAvailable] = useState(false); 
+  const [instructionsViewed, setInstructionsViewed] = useState(false); 
 
   // Game state (Task 1)
   const [players, setPlayers] = useState([
@@ -48,6 +48,7 @@ function App() {
           instructionsViewed={instructionsViewed}
           setInstructionsViewed={setInstructionsViewed}
         />
+
       ) : (
         <GameBoard
           players={players}

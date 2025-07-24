@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import MonopolyBoard from "./MonopolyBoard";
 
 
-const GameBoard = () => {
+const GameBoard = ({ onBack}) => {
   const [players, setPlayers] = useState([
     { name: "Player 1", color: "red", money: 1500, position: 0 },
     { name: "Player 2", color: "blue", money: 1500, position: 0 }
@@ -112,6 +112,9 @@ const rollDice = () => {
    
       <MonopolyBoard players={players} properties={properties} />
 
+   <button className="btn btn-outline-light mt-4" onClick={onBack}>
+      Back to Instructions
+    </button>
     </div>
   );
 };

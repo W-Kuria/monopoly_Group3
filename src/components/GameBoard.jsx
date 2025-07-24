@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Dice from "./Dice";
 import MonopolyBoard from "./MonopolyBoard";
 
 
@@ -109,14 +110,8 @@ setPlayers(tempPlayers);
     <div className="container py-4 text-center">
       <h2 className="mb-3 text-white">Have fun!</h2>
 
-      <button className="btn btn-success mb-4" onClick={rollDice}>
-        Roll Dice
-      </button>
-      <p className="mb-3 text-white">
-        Dice: 🎲 {dice[0]} + {dice[1]} = {dice[0] + dice[1]}
-      </p>
+      <Dice dice={dice} onRoll={rollDice} />
 
-   
       <MonopolyBoard players={players} properties={properties} />
 
    <button className="btn btn-outline-light mt-4" onClick={onBack}>

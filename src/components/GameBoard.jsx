@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MonopolyBoard from "./MonopolyBoard";
 
+
 const GameBoard = () => {
   const [players, setPlayers] = useState([
     { name: "Player 1", color: "red", money: 1500, position: 0 },
@@ -33,8 +34,18 @@ const rollDice = () => {
   });
   setPlayers(newPlayers);
 
-  // Property Logic  
   const currentPlayer = newPlayers[currentPlayerIndex];
+
+  const chanceTiles = [7, 22, 36]; 
+  const communityChestTiles = [2, 17, 33]; 
+
+  if (chanceTiles.includes(currentPlayer.position)) {
+    alert(`${currentPlayer.name} landed on Chance! Here's your card: "Advance to Go. Collect $200!"`);
+  } else if (communityChestTiles.includes(currentPlayer.position)) {
+    alert(`${currentPlayer.name} landed on Community Chest! Here's your card: "Bank error in your favor. Collect $200!"`);
+  }
+
+  // Property Logic  
   const landedProperty = properties.find(
     (prop) => prop.position === currentPlayer.position
   );
@@ -89,12 +100,12 @@ const rollDice = () => {
 
   return (
     <div className="container py-4 text-center">
-      <h2 className="mb-3">Have fun!</h2>
+      <h2 className="mb-3 text-white">Have fun!</h2>
 
       <button className="btn btn-success mb-4" onClick={rollDice}>
         Roll Dice
       </button>
-      <p>
+      <p className="mb-3 text-white">
         Dice: 🎲 {dice[0]} + {dice[1]} = {dice[0] + dice[1]}
       </p>
 

@@ -11,26 +11,37 @@ const tiles = [
   "Chance", "Park Place", "Luxury Tax", "Boardwalk"
 ];
 
-const MonopolyBoard = ({ players }) => {
+const MonopolyBoard = ({ players, properties }) => {
   return (
-    <>
+    <div>
       <div className="board-container">
-        {tiles.map((tile, i) => (
-          <div key={i} className={`tile tile-${i}`}>
-            {tile}
-            <div className="player-markers">
-              {players.map((player, index) =>
-                player.position === i ? (
-                  <div
-                    key={index}
-                    className="player-piece"
-                    style={{ backgroundColor: player.color }}
-                  />
-                ) : null
-              )}
+        {tiles.map((tile, i) => {
+          // Find if this tile is a property and if it's owned
+          const ownedProperty = properties.find(p => p.position === i);
+          const owner = ownedProperty ? players[ownedProperty.ownerId] : null;
+
+          // Determine the class for ownership highlighting
+          const tileClass = `tile tile-${i} ${owner ? `owned-${owner.color}` : ''}`;
+
+          return (
+            <div key={i} className={tileClass}>
+              <div className="tile-name">{tile}</div>
+              <div className="tile-position">{i}</div>
+
+              <div className="player-markers">
+                {players.map((player, index) =>
+                  player.position === i ? (
+                    <div
+                      key={index}
+                      className="player-piece"
+                      style={{ backgroundColor: player.color }}
+                    />
+                  ) : null
+                )}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       <div className="player-info text-center mt-4">
@@ -43,13 +54,9 @@ const MonopolyBoard = ({ players }) => {
             <div>Position: {player.position}</div>
           </div>
         ))}
-
       </div>
-    </>
+    </div>
   );
 };
 
-export default  MonopolyBoard;
-
-
-
+export default MonopolyBoard;

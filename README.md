@@ -1,12 +1,59 @@
-# React + Vite
+# 🎲 Monopoly React Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simplified, interactive digital version of the classic Monopoly board game built using **React**. This project is part of a collaborative group effort demonstrating use of React fundamentals, state management, and dynamic rendering.
 
-Currently, two official plugins are available:
+## 🚀Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🎮 **Game State Tracking**
+  - Player positions, money, properties, and turns are fully tracked.
+  - State is saved to and restored from `localStorage`.
 
-## Expanding the ESLint configuration
+- 🎲 **Dice Rolling**
+  - Simulates two dice.
+  - Players move forward based on roll total.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🏠 **Property Logic**
+  - Buy unowned properties.
+  - Pay rent to property owners.
+
+- 💼 **Chance & Community Chest**
+  - Draw simplified cards with events like collecting money or moving.
+
+- ⛓️ **Go to Jail Logic**
+  - Landing on tile 30 sends a player to jail (tile 10) and skips their next turn.
+
+- 💸 **Bankruptcy Detection**
+  - If a player’s balance drops below 0, they are removed from the game.
+
+- 💾 **Save/Resume**
+  - Game state is automatically saved and can be resumed later.
+
+- 📜 **Instructions Page**
+  - Learn how to play before starting the game.
+
+- ⏪ **Back to Instructions**
+  - Return to the instructions page without losing progress.
+
+- ▶️ **Resume Game**
+  - Reappear option after returning to instructions.
+    
+## Publishers
+This Project was created by William Kuria, Mathew Kariuki, Brenda Njaramba, and Justine Gichure.
+
+## 📁 Folder Structure
+
+```plaintext
+src/
+├── components/
+│   ├── App.jsx
+│   ├── GameBoard.jsx
+│   ├── MonopolyBoard.jsx
+│   ├── Dice.jsx
+│   └── PlayerPanel.jsx  (optional/for future)
+├── data/
+│   └── tiles.js         (optional – holds board tile data)
+├── assets/              (optional – images, icons)
+├── App.css / index.css
+└── main.jsx
+
+

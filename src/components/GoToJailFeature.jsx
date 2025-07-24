@@ -8,7 +8,7 @@ const GoToJailFeature = () => {
   });
   
   const [message, setMessage] = useState('');
-
+https://github.com/W-Kuria/monopoly_Group3/tree/scrum-21-go-to-Jail-Move-the-player-to-jail-space-and-skip-their-next-turn
   const rollDice = () => {
     // Handle skip turn logic
     if (player.skipNextTurn) {

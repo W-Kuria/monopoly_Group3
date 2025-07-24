@@ -1,4 +1,3 @@
-import React from "react";
 import "./MonopolyBoard.css";
 
 const tiles = [
@@ -44,9 +43,13 @@ const MonopolyBoard = ({ players }) => {
             <div>Position: {player.position}</div>
           </div>
         ))}
+
       </div>
     </>
   );
 };
 
-export default MonopolyBoard;
+export default  MonopolyBoard;
+
+
+

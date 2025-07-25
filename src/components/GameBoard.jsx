@@ -64,7 +64,7 @@ const GameBoard = ({ onBack }) => {
 
     let newPosition = (currentPlayer.position + total) % 40;
 
-    // Go to Jail
+    // Go to Jail => 
     if (newPosition === 30) {
       alert(`${currentPlayer.name} landed on "Go to Jail"! Skipping next turn.`);
       updatedPlayers[currentPlayerIndex] = {
@@ -83,14 +83,14 @@ const GameBoard = ({ onBack }) => {
         updatedPlayers[currentPlayerIndex].money += 200;
       }
 
-      // Community Chest
+      // Community Chest => By William
       const communityChestTiles = [2, 17, 33];
       if (communityChestTiles.includes(newPosition)) {
         alert(`${currentPlayer.name} drew a Community Chest card: "Bank error in your favor. Collect $200!"`);
         updatedPlayers[currentPlayerIndex].money += 200;
       }
 
-      // Property Logic
+      // Property Logic => By William
       const landedProperty = updatedProps.find(
         (prop) => prop.position === updatedPlayers[currentPlayerIndex].position
       );
@@ -120,7 +120,7 @@ const GameBoard = ({ onBack }) => {
       }
     }
 
-    // Bankruptcy check
+    // Bankruptcy check 
     const bankruptPlayers = updatedPlayers.filter(p => p.money < 0);
     if (bankruptPlayers.length > 0) {
       bankruptPlayers.forEach(bp => {

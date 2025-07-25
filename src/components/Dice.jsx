@@ -1,4 +1,3 @@
-// src/components/Dice.jsx
 const Dice = ({ dice, onRoll }) => {
   return (
     <div className="mb-4">

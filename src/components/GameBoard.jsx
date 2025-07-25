@@ -152,14 +152,38 @@ const GameBoard = ({ onBack }) => {
     saveGame(updatedPlayers, updatedProps, nextIndex);
   };
 
+const resetGame = () => {
+  localStorage.removeItem("monopolyGameState");
+  setPlayers([
+    { name: "Player 1", color: "red", money: 1500, position: 0, skipTurn: false },
+    { name: "Player 2", color: "blue", money: 1500, position: 0, skipTurn: false }
+  ]);
+  setProperties([
+    { name: "Mediterranean Avenue", position: 1, price: 60, rent: 2, owner: null },
+    { name: "Baltic Avenue", position: 3, price: 60, rent: 4, owner: null },
+    { name: "Reading Railroad", position: 5, price: 200, rent: 25, owner: null },
+    { name: "Oriental Avenue", position: 6, price: 100, rent: 6, owner: null },
+    { name: "Vermont Avenue", position: 8, price: 100, rent: 6, owner: null },
+    { name: "Connecticut Avenue", position: 9, price: 120, rent: 8, owner: null }
+  ]);
+  setCurrentPlayerIndex(0);
+  setDice([1, 1]);
+};
+
+
   return (
     <div className="container py-4 text-center">
       <h2 className="mb-3 text-white">Have fun!</h2>
       <Dice dice={dice} onRoll={rollDice} />
       <MonopolyBoard players={players} properties={properties} />
-      <button className="btn btn-outline-light mt-4" onClick={onBack}>
-        Back to Instructions
-      </button>
+<div className="d-flex justify-content-center gap-3 mt-4">
+  <button className="btn btn-primary" onClick={onBack}>
+    Back to Instructions
+  </button>
+  <button className="btn btn-danger" onClick={resetGame}>
+    Restart Game
+  </button>
+</div>
     </div>
   );
 };

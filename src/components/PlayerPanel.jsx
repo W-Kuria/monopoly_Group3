@@ -7,7 +7,6 @@ function PlayerPanel({ players, currentPlayerIndex }) {
           <strong>{player.name}</strong>
           <p> Money: ${player.money}</p>
           <p> Position: {player.position}</p>
-          <p> Properties: {player.properties.join(', ') || 'None'}</p>
         </div>
       ))}
     </div>

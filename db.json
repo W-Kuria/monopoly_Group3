@@ -1,0 +1,22 @@
+{
+  "spaces": [
+    {
+      "id": 0,
+      "name": "GO",
+      "type": "Start",
+      "description": "Collect $200 as you pass."
+    },
+     {
+      "id": 1,
+      "name": "Mediterranean Avenue",
+      "type": "Property",
+      "description": "Price: $60"
+    },
+     {
+      "id": 2,
+      "name": "Community Chest",
+      "type": "Card",
+      "description": "Draw a card"
+    }
+  ]
+  }
